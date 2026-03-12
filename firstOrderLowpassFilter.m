@@ -33,7 +33,7 @@ function [current_y, filter_history] = firstOrderLowpassFilter(x, k, filter_hist
 % 作者：ptmicky
 % 版本：1.0
 % 日期：2026-03-12
-% GitHub仓库：（可补充你的仓库地址）
+% GitHub仓库：https://github.com/ptmicky/first-order-filter
 
 %% 输入参数校验
 % 校验k的范围
