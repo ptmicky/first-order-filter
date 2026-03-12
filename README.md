@@ -21,3 +21,25 @@ float k = 0.8;
 
 // 批量滤波
 batch_filter(raw_data, filtered_data, 8, k, &last_y);
+
+
+### Python 版本
+from first_order_filter import first_order_filter
+
+raw_data = [20,25,18,22,21,24,19,23]
+last_y = raw_data[0]
+filtered_data, last_y = first_order_filter(raw_data, last_y, k=0.8)
+
+### MATLAB 版本
+raw_data = [20,25,18,22,21,24,19,23];
+last_y = raw_data(1);
+filtered_data = zeros(size(raw_data));
+for i = 1:length(raw_data)
+    [filtered_data(i), last_y] = firstOrderLowpassFilter(raw_data(i), 0.8, last_y);
+end
+
+滤波系数 k 调优指南
+场景	推荐 k 值	效果说明
+静态信号（温度）	0.9~1.0	极强滤波，噪声抑制最优
+普通动态信号（转速）	0.7~0.9	平衡滤波与响应速度
+快速信号（加速度）	0.1~0.7	弱滤波，保证实时性
